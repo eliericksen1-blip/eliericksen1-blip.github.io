@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batman</title>
+  <style>
+    body {
+      background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/22/New_York_City_at_night_HDR.jpg?utm_source=simple.wikipedia.org&utm_campaign=index&utm_content=original);
+    }
+  </style>
+</head>
+
+<body>
+  <img id="Batman" hidden
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdivyOlAch_ZutekMelelKH_4ydFCM3Syno1ogTJslfcJeb7x_Uce6PbRz:https://lookaside.instagram.com/seo/google_widget/crawler/%3Fmedia_id%3D3841706336988666451&s=10"
+    width="100">
+  <img id="Obsticle" hidden
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6JrHEMhdPxSz_vJKNvb0UySNZVDWRUKKY8uAS7SDrfrLqc5W6kKlL8FIO:https://images.thedirect.com/media/article_full/batman-sequel.jpg&s=10"
+    width="100">
+  <img id="BatSymbol" hidden
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWqDsRfvT-sBYJUL6WhO8Q58hOkEogqRj8yMV0M44nGSvcMBCPy76rMj8:https://static.wikia.nocookie.net/batman/images/f/fb/Miller_bat_insignia.jpg/revision/latest%3Fcb%3D20180216015651&s=10"
+    width="200">
+  <canvas id="myCanvas" width="2500" height="1000"></canvas>
+
+</body>
+
+</html>
+<script>
+  var Batmany = 800
+  var Batmanspeedy = 0
+  var c = document.getElementById("myCanvas");
+  var Obsticley = 800
+  var Obsticlex = 1600
+  var backgroundy = 1500
+  var ctx = c.getContext("2d");
+  ObsticleSpeed = 3
+  var Batman = document.getElementById("Batman");
+  document.addEventListener("keydown", jump)
+
+  function jump() {
+    Batmanspeedy = 10
+  }
+  //if you dont jump the game will end and if you do it will continue
+  setInterval(display, 10);
+  function display() {
+    ctx.clearRect(0, 0, 2000, 2000)
+    ctx.drawImage(BatSymbol, 10, backgroundy, 100, 100);
+    ctx.drawImage(Batman, 10, Batmany, 100, 100);
+    ctx.drawImage(Obsticle, Obsticlex, Obsticley, 100, 100);
+    Obsticlex = Obsticlex - ObsticleSpeed
+    Batmany = Batmany - Batmanspeedy
+    speedy = Batmanspeedy + -0.1
+    if (Batmanspeedy > 800) {
+      Batmanspeedy = 0
+    }
+    if (10 < Obsticlex + 10) {
+      if (10 > Obsticlex - 10) {
+        if (Batmany >= 800) {
+          ObsticleSpeed = 0
+          Batmanspeedy = 0
+          ctx.fillStyle = "white"
+          ctx.font = "50px Arial";
+          ctx.fillText("Game Over", 10, 80);
+        }
+      }
+    }
+  }
+</script>

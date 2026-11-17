@@ -1,19 +1,51 @@
 <!Doctype html>
 <html>
-  <head>
-  
-  </head>
-  <body>
-      <p>Batman</p>
-    <canvas id="myCanvas" width="2000" height="2000">
-</canvas>
-    </body>
+
+<head>
+
+</head>
+
+<body>
+  <canvas id="myCanvas" width="1800" height="1000">
+  </canvas>
+</body>
+
 </html>
 <script>
   var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.fillRect(200,200,200,200);
-var x = x=10
+  var ctx = c.getContext("2d");
+  var x = []
+  var y = []
+  var xdirection = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+  var ydirection = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2,]
+  for (i = 0; i < 10000; i = i + 1) {
+    x.push(Math.sin(i / 100) * 50 +500)
+    y.push(Math.cos(i / 100) * 50 + 500)
+    xdirection.push(Math.sin(i / 100) * 5)
+    ydirection.push(Math.cos(i / 100) * 5)
+  }
+  setInterval(update, 7)
+  function update() {
+    ctx.clearRect(0, 0, 2000, 2000)w
+    //the direction needs to change if the x or y are to be less than a certian number. 
+    for (i = 0; i < 10000; i = i + 1) {
+      x[i] = x[i] + xdirection[i]
+      y[i] = y[i] + ydirection[i]
+      if (x[i] > 1800) {
+        xdirection[i] = -2
+      }
+      if (x[i] < 0) {
+        xdirection[i] = 4
+      }
+      if (y[i] > 925) {
+        ydirection[i] = -2
+      }
+      if (y[i] < 0) {
+        ydirection[i] = 4
+      }
+      ctx.fillRect(x[i], y[i], 10, 10);
+    }
 
+  }
 
 </script>
